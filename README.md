@@ -2,7 +2,7 @@
 
 Template repo for FastAPI + CI/CD with Github Actions.
 
-### Deploy to Azure
+### Deploy to Azure with GitHub Actions
 
 1. Create a Azure Container Registry or choose a pre-existing one.
    * Go to the registry -> `Access keys` -> Enable `Admin user` -> Copy the username and password
@@ -16,7 +16,7 @@ Template repo for FastAPI + CI/CD with Github Actions.
    * Create the Web App
 3. Get a Web App Publish Profile, to deploy from GitHub
    * Go to your app service in the Azure portal. 
-   * On the Overview page, select Get Publish profile. 
+   * On the Overview page, select `Download publish profile`. 
    * Save the downloaded file. You'll use the contents of the file to create a GitHub secret.
 4. Create the GitHub secrets and variables
    * Go to your GitHub repository
@@ -29,15 +29,8 @@ Template repo for FastAPI + CI/CD with Github Actions.
    * Add the following **variables**:
      * `AZURE_WEBAPP_NAME`: the name of your web app, e.g. `fastapi-template-jacopo`
      * `REGISTRY_URL`: the Azure Container Registry URL, e.g. `fastapiregister.azurecr.io`
-4. Deploy using Azure CLI
-```commandline
-az login
-az webapp up --name <my-api-name>
-```
-4. Go to `<my-api-name>.azurewebsites.net` and see the app running.
-
-### Setup GitHub Actions
-
+5. Push a change to the repository to trigger the GitHub Actions workflow.
+4. Wait 5-10 minutes, then go to `<my-api-name>.azurewebsites.net` and see the app running.
 
 
 ### Run locally
