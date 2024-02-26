@@ -2,7 +2,6 @@
 FROM python:3.11-slim
 
 # copy files to the /app folder in the container
-ADD clients /app/clients
 COPY ./main.py /app/main.py
 COPY ./requirements.txt /app/requirements.txt
 

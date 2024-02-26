@@ -1,3 +1,6 @@
+# Azure
+.azure/
+
 # Documents
 *.pdf
 *.docx
