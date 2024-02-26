@@ -26,7 +26,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # load environment variables
-port = os.environ["PORT"]
+if "PORT" not in os.environ.keys():
+    port = 8000
+else:
+    port = os.environ["PORT"]
 
 # initialize FastAPI
 app = FastAPI(
