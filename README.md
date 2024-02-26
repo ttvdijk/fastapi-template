@@ -25,6 +25,7 @@ Template repo for FastAPI + CI/CD with Github Actions.
      * `DOCKER_REGISTRY_SERVER_URL`: the URL of the Azure Container Registry, e.g. `fastapiregister.azurecr.io`
      * `DOCKER_REGISTRY_SERVER_USERNAME`: the username of the Azure Container Registry, e.g. `fastapiregister`
      * `DOCKER_REGISTRY_SERVER_PASSWORD`: the password of the Azure Container Registry
+     * `WEBSITES_PORT`: 8000
 4. Create the GitHub secrets and variables, so that GitHub Actions can deploy to Azure
    * Go to your GitHub repository
    * Go to `Settings` -> `Secrets and variables` -> `Actions` -> `New repository secret`
