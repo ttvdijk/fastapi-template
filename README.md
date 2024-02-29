@@ -9,7 +9,7 @@ Template repo for FastAPI. Includes CI/CD on Azure Web App using Github Actions.
 3. add needed environment variables to `.env` file
 > [!WARNING]  
 > Do not store credentials/passswords/keys in the code, use the `.env` file instead.
-> This will not be pushed to the repository, as it is listed in the `.gitignore` file, so your credentials 
+> This file will not be pushed to the repository, as it is listed in the `.gitignore` file, so your credentials 
 > won't be exposed.
 4. add needed packages to `pyproject.toml`
 5. run `poetry install` to install the packages
@@ -34,11 +34,15 @@ Template repo for FastAPI. Includes CI/CD on Azure Web App using Github Actions.
    * Go to the registry -> `Access keys` -> Enable `Admin user` -> Copy the username and password
 3. Give permissions to the Web App to access the Container Registry
    * Go to your app service in the Azure portal.
-   * Under `Configuration`, update the settings:
+   * Under `Configuration`, update the `Application settings`:
      * `DOCKER_REGISTRY_SERVER_URL`: the URL of the Azure Container Registry, e.g. `fastapiregister.azurecr.io`
      * `DOCKER_REGISTRY_SERVER_USERNAME`: the username of the Azure Container Registry, e.g. `fastapiregister`
      * `DOCKER_REGISTRY_SERVER_PASSWORD`: the password of the Azure Container Registry
      * `WEBSITES_PORT`: 8000
+> [!IMPORTANT]  
+> These `Application settings` determine which environment variables are accessible by the web app. 
+> If you change/add environment variables in the GitHub repository, don't forget to update the Web App `Configuration` in the Azure portal.
+
 4. Create the GitHub secrets and variables, so that GitHub Actions can deploy to Azure
    * Go to your GitHub repository
    * Go to `Settings` -> `Secrets and variables` -> `Actions` -> `New repository secret`
@@ -54,10 +58,6 @@ Template repo for FastAPI. Includes CI/CD on Azure Web App using Github Actions.
 5. If the app is not running
    * go to the `Actions` tab in your GitHub repository and check the logs of the failed workflow.
    * go to the `Overview` tab of your Web App in the Azure portal and check `Deployment logs` -> `Logs`.
-
-> [!WARNING]  
-> The environment variables of the web app are stored as `Application settings` in the `Configuration` section of the web app in the Azure portal. 
-> Don't forget to update the environment variables in the Azure portal, if you change/add environment variables in the GitHub repository.
 
 ### Run locally
 
