@@ -47,6 +47,7 @@ Template repo for FastAPI + CI/CD with Github Actions.
 
 ```
 cp example.env .env
-pip install -r requirements.txt
+pip install poetry
+poetry install
 uvicorn main:app --reload
 ```
