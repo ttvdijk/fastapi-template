@@ -1,14 +1,10 @@
 import uvicorn
 from typing import Union
-from fastapi import Security, Depends, FastAPI, APIRouter, Request, HTTPException, Header
+from fastapi import Depends, FastAPI, Request, HTTPException, Header
 from fastapi.responses import RedirectResponse, JSONResponse
-from fastapi.security.api_key import APIKeyHeader, APIKey
+from fastapi.security import APIKeyHeader
 from pydantic import BaseModel
-from enum import Enum
-import requests
 import os
-from enum import Enum
-import base64
 import logging
 import sys
 logger = logging.getLogger()
@@ -41,6 +37,7 @@ app = FastAPI(
         "url": "https://www.gnu.org/licenses/agpl-3.0.en.html",
     },
 )
+key_query_scheme = APIKeyHeader(name="key")
 
 
 def some_function():
@@ -60,21 +57,28 @@ async def docs_redirect():
     return RedirectResponse(url='/docs')
 
 
-@app.post("/post-something")
-async def post_something(request: Request, dependencies=Depends(required_headers)):
-    """POST Something."""
+class MyPayload(BaseModel):
+    text_field: str
+    integer_field: int | None = None
 
-    input_data = await request.json()
+
+@app.post("/post-something")
+async def post_something(payload: MyPayload, dependencies=Depends(required_headers)):
+    """POST Something."""
     
     # do something with input_data
-    # ...
+    new_string = payload.text_field = str(payload.integer_field)
     
-    return JSONResponse(status_code=200, content={"message": "Success"})
+    return JSONResponse(status_code=200, content={"message": "Success", "new_string": new_string})
 
 
 @app.get("/get-something")
-async def kobo_to_121(request: Request, dependencies=Depends(required_headers)):
+async def kobo_to_121(request: Request, api_key: str = Depends(key_query_scheme)):
     """GET Something."""
+
+    # check API key
+    if api_key != os.environ["API_KEY"]:
+        raise HTTPException(status_code=401, detail="Unauthorized")
 
     return JSONResponse(status_code=200, content={"data": "blablabla"})
 
