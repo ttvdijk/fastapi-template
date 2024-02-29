@@ -72,15 +72,19 @@ async def post_something(payload: MyPayload, dependencies=Depends(required_heade
     return JSONResponse(status_code=200, content={"message": "Success", "new_string": new_string})
 
 
+class MyRequest(BaseModel):
+    id: int
+
+
 @app.get("/get-something")
-async def get_something(request: Request, api_key: str = Depends(key_query_scheme)):
+async def get_something(payload: MyRequest, api_key: str = Depends(key_query_scheme)):
     """GET Something."""
     
     # check API key
     if api_key != os.environ["API_KEY"]:
         raise HTTPException(status_code=401, detail="Unauthorized")
 
-    return JSONResponse(status_code=200, content={"data": "blablabla"})
+    return JSONResponse(status_code=200, content={"message": f"this is the data of registration {payload.id}"})
 
 
 if __name__ == "__main__":
