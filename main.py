@@ -73,7 +73,7 @@ async def post_something(payload: MyPayload, dependencies=Depends(required_heade
 
 
 @app.get("/get-something")
-async def kobo_to_121(request: Request, api_key: str = Depends(key_query_scheme)):
+async def get_something(request: Request, api_key: str = Depends(key_query_scheme)):
     """GET Something."""
 
     # check API key
