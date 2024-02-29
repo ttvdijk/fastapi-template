@@ -1,6 +1,6 @@
 # fastapi-template
 
-Template repo for FastAPI + CI/CD with Github Actions.
+Template repo for FastAPI. Includes CI/CD on Azure Web App using Github Actions. Uses [Poetry](https://python-poetry.org/) for dependency management.
 
 ### Setup
 
