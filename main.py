@@ -72,12 +72,8 @@ async def post_something_for_sanne(payload: MyPayload, dependencies=Depends(requ
     return JSONResponse(status_code=200, content={"message": "Success", "new_string": new_string})
 
 
-class MyRequest(BaseModel):
-    id: int
-
-
 @app.get("/get-something")
-async def get_something(payload: MyRequest, api_key: str = Depends(key_query_scheme)):
+async def get_something(id: int = 0, api_key: str = Depends(key_query_scheme)):
     """GET Something."""
     
     # check API key
