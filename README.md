@@ -13,8 +13,8 @@ Template repo for FastAPI. Includes CI/CD on Azure Web App using Github Actions.
 > won't be exposed.
 4. add needed packages to `pyproject.toml`
 5. run `pip install poetry` to install poetry
-5. run `poetry install` to install the packages
-6. run `poetry run uvicorn main:app --reload` to start the server
+5. run `poetry install` to install the packages (or `python -m poetry install`, if `poetry` command is not found)
+6. run `poetry run uvicorn main:app --reload` to start the server  (or `python -m poetry run uvicorn main:app --reload`, if `poetry` command is not found)
 7. go to `http://127.0.0.1:8000/docs` and test if the app runs as expected.
 
 ### Deploy to Azure with GitHub Actions
