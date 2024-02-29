@@ -31,12 +31,11 @@ Template repo for FastAPI + CI/CD with Github Actions.
    * Go to `Settings` -> `Secrets and variables` -> `Actions` -> `New repository secret`
    * Add the following **secrets**:
      * `AZURE_WEBAPP_PUBLISH_PROFILE`: the contents of the downloaded file from step 3
-     * `REGISTRY_USERNAME`: the username of the Azure Container Registry, e.g. `fastapiregister`
      * `REGISTRY_PASSWORD`: the password of the Azure Container Registry
    * Go to `Settings` -> `Secrets and variables` -> `Actions` -> `New repository variable`
    * Add the following **variables**:
      * `AZURE_WEBAPP_NAME`: the name of your web app, e.g. `fastapi-template-jacopo`
-     * `REGISTRY_URL`: the Azure Container Registry URL, e.g. `fastapiregister.azurecr.io`
+     * `REGISTRY_NAME`: the name of the Azure Container Registry, e.g. `fastapiregister`
 5. Push a change to the repository to trigger the GitHub Actions workflow.
 4. Wait 5-10 minutes, then go to `<my-api-name>.azurewebsites.net` and see the app running.
 5. If the app is not running

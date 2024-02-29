@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "fastapi-template"
+version = "0.0.1"
+authors = [
+  "Jacopo Margutti <jmargutti@redcross.nl>"
+]
+description = "FastAPI template"
+readme = "README.md"
+repository = "https://github.com/jmargutt/fastapi-template"
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
