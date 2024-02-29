@@ -63,7 +63,7 @@ class MyPayload(BaseModel):
 
 
 @app.post("/post-something")
-async def post_something(payload: MyPayload, dependencies=Depends(required_headers)):
+async def post_something_for_sanne(payload: MyPayload, dependencies=Depends(required_headers)):
     """POST Something. This method is meant for you to send the data of the registration in this format, so that it will be stored in the database. """
     
     # do something with input_data
