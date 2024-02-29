@@ -74,7 +74,7 @@ async def post_something_for_sanne(payload: MyPayload, dependencies=Depends(requ
 
 @app.get("/get-something")
 async def get_something(id: int, api_key: str = Depends(key_query_scheme)):
-    """GET Something."""
+    """GET Something. TEST"""
     
     # check API key
     if api_key != os.environ["API_KEY"]:
