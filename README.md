@@ -2,8 +2,21 @@
 
 Template repo for FastAPI + CI/CD with Github Actions.
 
-### Deploy to Azure with GitHub Actions
+### Setup
 
+1. run `git clone https://github.com/jmargutt/fastapi-template.git`
+2. change code as needed
+3. add needed environment variables to `.env` file
+> [!WARNING]  
+> Do not store credentials/passswords/keys in the code, use the `.env` file instead.
+> This will not be pushed to the repository, as it is listed in the `.gitignore` file, so your credentials 
+> won't be exposed.
+4. add needed packages to `pyproject.toml`
+5. run `poetry install` to install the packages
+6. run `uvicorn main:app --reload` to start the server
+7. go to `http://127.0.0.1:8000/docs` and test if the app runs as expected.
+
+### Deploy to Azure with GitHub Actions
 
 2. Create a new App Service Plan in Azure, or choose a pre-existing one.
 2. Create a new Web App in Azure:
@@ -42,6 +55,9 @@ Template repo for FastAPI + CI/CD with Github Actions.
    * go to the `Actions` tab in your GitHub repository and check the logs of the failed workflow.
    * go to the `Overview` tab of your Web App in the Azure portal and check `Deployment logs` -> `Logs`.
 
+> [!WARNING]  
+> The environment variables of the web app are stored as `Application settings` in the `Configuration` section of the web app in the Azure portal. 
+> Don't forget to update the environment variables in the Azure portal, if you change/add environment variables in the GitHub repository.
 
 ### Run locally
 
