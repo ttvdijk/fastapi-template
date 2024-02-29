@@ -67,7 +67,7 @@ async def post_something(payload: MyPayload, dependencies=Depends(required_heade
     """POST Something."""
     
     # do something with input_data
-    new_string = payload.text_field + str(payload.integer_field)
+    new_string = payload.text_field + " Wessel is here " + str(payload.integer_field)
     
     return JSONResponse(status_code=200, content={"message": "Success", "new_string": new_string})
 
