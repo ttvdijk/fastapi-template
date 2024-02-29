@@ -64,7 +64,7 @@ class MyPayload(BaseModel):
 
 @app.post("/post-something")
 async def post_something(payload: MyPayload, dependencies=Depends(required_headers)):
-    """POST Something."""
+    """POST Something. This method is meant for you to send the data of the registration in this format, so that it will be stored in the database. """
     
     # do something with input_data
     new_string = payload.text_field + " Wessel is here " + str(payload.integer_field)
@@ -75,7 +75,7 @@ async def post_something(payload: MyPayload, dependencies=Depends(required_heade
 @app.get("/get-something")
 async def get_something(request: Request, api_key: str = Depends(key_query_scheme)):
     """GET Something."""
-
+    
     # check API key
     if api_key != os.environ["API_KEY"]:
         raise HTTPException(status_code=401, detail="Unauthorized")
