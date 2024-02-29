@@ -29,11 +29,11 @@ Template repo for FastAPI + CI/CD with Github Actions.
 4. Create the GitHub secrets and variables, so that GitHub Actions can deploy to Azure
    * Go to your GitHub repository
    * Go to `Settings` -> `Secrets and variables` -> `Actions` -> `New repository secret`
-   * Add the following **secrets**:
+   * Add the following **repository secrets**:
      * `AZURE_WEBAPP_PUBLISH_PROFILE`: the contents of the downloaded file from step 3
      * `REGISTRY_PASSWORD`: the password of the Azure Container Registry
    * Go to `Settings` -> `Secrets and variables` -> `Actions` -> `New repository variable`
-   * Add the following **variables**:
+   * Add the following **repository variables**:
      * `AZURE_WEBAPP_NAME`: the name of your web app, e.g. `fastapi-template-jacopo`
      * `REGISTRY_NAME`: the name of the Azure Container Registry, e.g. `fastapiregister`
 5. Push a change to the repository to trigger the GitHub Actions workflow.
